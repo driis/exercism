@@ -1,15 +1,26 @@
 Bob = function() {
-	var responses = {
-		"WATCH OUT!": 										"Woah, chill out!",		
-		"1, 2, 3 GO!": 										"Woah, chill out!",
-		"ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!": 	"Woah, chill out!",
-		"Does this cryogenic chamber make me look fat?" : 	"Sure.",
-		"": 												"Fine, be that way!"
-	}
+	isEmpty = function(phrase){
+		return phrase.length === 0;
+	};
+	isShouting = function(phrase){
+		return phrase.toUpperCase() === phrase;
+	};
+	isQuestion = function(phrase){
+		return phrase.lastIndexOf('?') === phrase.length - 1;
+	};
+
 	return {
 		hey: function(phrase) {
-			var response = responses[phrase];			
-			return response || "Whatever.";
+			if (isEmpty(phrase)) {
+				return "Fine, be that way!";
+			}
+			if (isShouting(phrase)) {
+				return "Woah, chill out!";
+			}
+			if (isQuestion(phrase)) {
+				return "Sure.";
+			}
+			return "Whatever.";
 		}
-	}
-}
+	};
+};
