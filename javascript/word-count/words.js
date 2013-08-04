@@ -1,0 +1,4 @@
+Words = function() {
+    "use strict";
+      
+};
