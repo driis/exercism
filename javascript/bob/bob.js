@@ -1,11 +1,13 @@
-Bob = function() {
-	isEmpty = function(phrase){
+Bob = function(){
+	"use strict";
+
+	var isEmpty = function(phrase){
 		return phrase.length === 0;
 	};
-	isShouting = function(phrase){
+	var isShouting = function(phrase){
 		return phrase.toUpperCase() === phrase;
 	};
-	isQuestion = function(phrase){
+	var isQuestion = function(phrase){
 		return phrase.lastIndexOf('?') === phrase.length - 1;
 	};
 
