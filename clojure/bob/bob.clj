@@ -1,13 +1,13 @@
 (ns bob (:require [clojure.string :as str]))
 
-(defn is-silent [phrase]
+(defn- is-silent [phrase]
     (str/blank? phrase)
 )
-(defn is-shouting [phrase]
+(defn- is-shouting [phrase]
     (= phrase (str/upper-case phrase))
 )
 
-(defn is-question [phrase]
+(defn- is-question [phrase]
     (= \? (last phrase))
 )
 
