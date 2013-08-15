@@ -1,10 +1,21 @@
 (ns bob (:require [clojure.string :as str]))
 
-(defn response-for [x]
+(defn is-silent [phrase]
+    (str/blank? phrase)
+)
+(defn is-shouting [phrase]
+    (= phrase (str/upper-case phrase))
+)
+
+(defn is-question [phrase]
+    (= \? (last phrase))
+)
+
+(defn response-for [phrase]
 	(cond 
-		(str/blank? x) "Fine, be that way."
-		(= (str/upper-case x) x) "Woah, chill out!"
-		(= \? (last x)) "Sure."
+		(is-silent phrase) "Fine, be that way."
+		(is-shouting phrase) "Woah, chill out!"
+		(is-question phrase) "Sure."
 		:else "Whatever."
 	) 	
 )
