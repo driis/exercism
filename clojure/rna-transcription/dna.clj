@@ -1,10 +1,7 @@
 (ns dna)
 
 (defn- strand-convert [ch]
-    (cond 
-        (= \T ch) \U
-        :else ch
-        )
+    (if (= \T ch) \U ch)
 )
 
 (defn to-rna [dna]
