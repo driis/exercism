@@ -2,7 +2,7 @@
 
 var Beer = {};
 
-Beer.verse = function(count) {
+Beer.verse = function(bottles) {
     var countString = function(count) {
         if (count === 0)
             return "no more bottles";
@@ -17,12 +17,20 @@ Beer.verse = function(count) {
         return "one";
     };
 
-    if (count === 0)
-        return "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n";
+    var firstStrophe = function(bottles) {
+        var str = countString(bottles) + " of beer on the wall, " + countString(bottles) + " of beer.";
+        str = str.slice(0,1).toUpperCase() + str.slice(1);
+        return str;        
+    }
 
-    return countString(count) + " of beer on the wall, " + countString(count) + 
-        " of beer.\nTake " + bottleString(count) + " down and pass it around, " + 
-        countString(count - 1) + " of beer on the wall.\n"
+    var secondStrophe = function(bottles) {
+        if (bottles === 0)
+            return "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
+
+        return "Take " + bottleString(bottles) + " down and pass it around, " + countString(bottles - 1) + " of beer on the wall.\n";
+    }
+
+    return firstStrophe(bottles) + "\n" + secondStrophe(bottles);
 };
 
 Beer.sing = function(begin, end) {
