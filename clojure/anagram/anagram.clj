@@ -1,11 +1,11 @@
 (ns anagram
   (:require [clojure.string :as str]))
 
-(defn- normalizeWord [word]
-  (sort (str/upper-case word)))
+(defn- word-chars [word]
+  (frequencies (str/upper-case word)))
 
 (defn anagrams-for [word, candidates]
-  (let [normWord (normalizeWord word)] 
+  (let [norm-word (word-chars word)] 
     (filter (fn [candidate] 
-      (= normWord (normalizeWord candidate))) 
+      (= norm-word (word-chars candidate)))
       candidates)))
