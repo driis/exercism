@@ -1,11 +1,11 @@
 (ns beer
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as string]))
 
 (defn- count-string [count]
   (cond 
     (zero? count) "no more bottles"
     (= count 1)   "1 bottle"
-    :else         (str/join [count, " bottles"])))
+    :else         (str count " bottles")))
 
 (defn- beer-string [count]
   (if (= count 1) 
@@ -13,25 +13,25 @@
     "one"))
 
 (defn- first-strophe [count]
-  (str/capitalize 
-    (str/join [(count-string count)
+  (string/capitalize 
+    (str (count-string count)
       " of beer on the wall, " 
       (count-string count) 
-      " of beer."])))
+      " of beer.")))
 
 (defn- second-strophe [count]
   (if (zero? count)
     "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
-    (str/join ["Take "
+    (str "Take "
       (beer-string count)
       " down and pass it around, "
       (count-string (- count 1))
-      " of beer on the wall.\n"])))
+      " of beer on the wall.\n")))
   
 (defn verse [count]
-  (str/join "\n" [(first-strophe count) (second-strophe count)]))
+  (str (first-strophe count) "\n" (second-strophe count)))
 
 (defn sing 
   ([begin] (sing begin 0))
   ([begin end]
-    (str/join [(str/join "\n" (map verse (range begin (- end 1) -1))) "\n"])))
+    (str (string/join "\n" (map verse (range begin (- end 1) -1))) "\n")))
