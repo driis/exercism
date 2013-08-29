@@ -5,7 +5,7 @@
     (when-not (allowed-nucleotide strand)
       (throw (Exception. "invalid nucleotide")))))
 
-(defn nucleotide-counts [dna-stri ng]
+(defn nucleotide-counts [dna-string]
   (let [empty {\A 0, \T 0, \C 0, \G 0}]
     (merge empty (frequencies dna-string))))
 
