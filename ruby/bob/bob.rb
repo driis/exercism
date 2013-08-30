@@ -1,6 +1,6 @@
 class Bob
   def hey(phrase)
-    phrase.strip!
+    trim_input(phrase)
     if is_silent phrase
       return 'Fine. Be that way!'
     end
@@ -25,5 +25,9 @@ class Bob
 
   def is_silent(phrase)
     phrase == ''
+  end
+
+  def trim_input(phrase)
+    phrase.strip!
   end
 end
