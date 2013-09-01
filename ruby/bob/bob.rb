@@ -1,15 +1,9 @@
 class Bob
   def hey(phrase)
-    trim_input(phrase)
-    if is_silent phrase
-      return 'Fine. Be that way!'
-    end
-    if is_shouting phrase
-      return 'Woah, chill out!'
-    end
-    if is_question phrase
-      return 'Sure.'
-    end
+    phrase = trim_input phrase
+    return 'Fine. Be that way!' if is_silent phrase
+    return 'Woah, chill out!' if is_shouting phrase
+    return 'Sure.' if is_question phrase
 
     'Whatever.'
   end
@@ -28,6 +22,6 @@ class Bob
   end
 
   def trim_input(phrase)
-    phrase.strip!
+    phrase.strip
   end
 end
