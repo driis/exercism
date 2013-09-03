@@ -1,4 +1,5 @@
-(ns phone (:require [clojure.string :as str]))
+(ns phone 
+  (:require [clojure.string :as str]))
 
 (def phone-number-length 10)
 
