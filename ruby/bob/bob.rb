@@ -1,23 +1,28 @@
 class Bob
   def hey(phrase)
-    phrase = phrase.strip
-    return 'Fine. Be that way!' if silent? phrase
-    return 'Woah, chill out!' if shouting? phrase
-    return 'Sure.' if question? phrase
+    sentence = Sentence.new phrase
 
+    return 'Fine. Be that way!' if sentence.silent?
+    return 'Woah, chill out!' if sentence.shouting?
+    return 'Sure.' if sentence.question?
     'Whatever.'
   end
+end
 
-  private
-  def question?(phrase)
-    phrase.end_with? '?'
+class Sentence
+  def initialize phrase
+    @phrase = phrase.strip
   end
 
-  def shouting?(phrase)
-    phrase.upcase == phrase
+  def question?
+    @phrase.end_with? '?'
   end
 
-  def silent?(phrase)
-    phrase.empty?
+  def shouting?
+    @phrase.upcase == @phrase
+  end
+
+  def silent?
+    @phrase.empty?
   end
 end
