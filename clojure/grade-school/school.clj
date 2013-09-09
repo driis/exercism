@@ -4,10 +4,10 @@
   (merge-with concat store {grade [student]}))
 
 (defn grade [store grade]
-  (get store grade []))
+  (store grade []))
 
-(defn- sort-grade [grade] 
-  {(first grade) (sort (second grade))})
+(defn- sort-grade [[key value]] 
+  {key (sort value)})
 
 (defn sorted [store]
   (into (sorted-map) 
