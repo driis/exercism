@@ -9,8 +9,9 @@ var DNA = function(dna) {
             var shortest = dna.length > otherDna.length ? otherDna : dna;
 
             return shortest.reduce(function(acc, val, index) {
-                if (val !== longest[index])
+                if (val !== longest[index]) {
                     acc++;
+                }
                 return acc;
             }, 0);
         }
