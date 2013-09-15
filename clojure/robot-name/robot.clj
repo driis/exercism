@@ -1,6 +1,5 @@
 (def name-chars  "ABCDEFGHIJKLMNOPQRSTUVWXYZW")
 (def name-digits "0123456789")
-(def names {})
 
 (defn- random-chars [count collection]
   (repeatedly count #(rand-nth collection)))
@@ -12,12 +11,10 @@
 
 (defn robot []
   (let [name (new-name)]
-    (def names (assoc names name name))
-    {:id name}))
+    {:id (atom name)}))
 
 (defn robot-name [robot]
-  (names (robot :id)))
+  @(robot :id))
 
 (defn reset-name [robot]
-  (def names (update-in names [(robot :id)] new-name))
-  robot)
+  (swap! (robot :id) new-name))
