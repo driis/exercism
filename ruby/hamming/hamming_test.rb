@@ -1,7 +1,9 @@
+gem "minitest"
 require 'minitest/autorun'
+
 require_relative 'hamming'
 
-class HammingTest < MiniTest::Unit::TestCase
+class HammingTest < MiniTest::Test
   def test_no_difference_between_empty_strands
     assert_equal 0, Hamming.compute('', '')
   end
