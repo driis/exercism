@@ -1,9 +1,10 @@
 class Hamming
   def self.compute(first,second)
-    firstArr = first.split ""
-    secondArr = second.split ""
+    length = [first.length, second.length].min
+    firstArr = first[0,length].split ""
+    secondArr = second[0,length].split ""
     firstArr.zip(secondArr).reduce 0 do |sum,row| 
-      equal_char = row[0] == row[1] || row[0].nil? || row[1].nil?
+      equal_char = row[0] == row[1]
       sum + (equal_char ? 0 : 1)
     end        
   end
